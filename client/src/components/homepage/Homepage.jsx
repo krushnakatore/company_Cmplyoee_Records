@@ -9,10 +9,11 @@ import "./homepage.css";
 
 export default function Homepage() {
   const { user } = useContext(AuthContext);
+
   // useEffect(() => {
   //   axios.post());
   // });
-  console.log("userhome", user.employee[0].employee_Name);
+  // console.log("userhome", user.employee[0].employee_Name);
 
   return (
     <div className="homepage">
@@ -20,12 +21,11 @@ export default function Homepage() {
       <div className="homepageWrapper">
         <div className="leftDiv">
           {user.employee.map((e) => {
+            console.log(e.employee_Name);
             return (
-              <Link to="/details">
-                <li key={e._id} props={e}>
-                  {e.employee_Name}
-                </li>
-              </Link>
+              <li key={e._id} props={e}>
+                <Link to={`/details/${e._id}`}>{e.employee_Name}</Link>
+              </li>
             );
           })}
         </div>

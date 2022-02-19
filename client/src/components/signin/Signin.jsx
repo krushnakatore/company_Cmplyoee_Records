@@ -5,6 +5,7 @@ import { makeLogin } from "../../apilogin";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
 export default function Signin() {
   const { dispatch, user } = useContext(AuthContext);
   const email = useRef();
@@ -18,6 +19,7 @@ export default function Signin() {
       dispatch
     );
   };
+
   console.log("user", user);
   if (user) {
     return <Navigate to="/" />;
@@ -28,6 +30,7 @@ export default function Signin() {
         <h2>Signin Form</h2>
         <form onSubmit={handleClick}>
           <input
+            className="email"
             placeholder="Enter your email"
             type="email"
             name="email_id"
@@ -35,6 +38,7 @@ export default function Signin() {
           />
           <br />
           <input
+            className="password"
             placeholder="Enter your password"
             type="password"
             name="password"

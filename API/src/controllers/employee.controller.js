@@ -14,15 +14,17 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const employee = await Employee.find()
+    const employee = await Employee.findById(req.params.id)
       .populate({ path: "employer_id" })
       .populate({ path: "payment_id" })
       .lean()
       .exec();
+    let a = employee.payment_id.amount;
+    console.log([...a]);
 
-    res.status(201).send({ employee });
+    res.status(201).send(a);
   } catch (err) {
     res.status(500).json({ message: err.message, status: "Failed" });
   }
