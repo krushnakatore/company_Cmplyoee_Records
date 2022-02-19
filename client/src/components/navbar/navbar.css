@@ -1,0 +1,20 @@
+.navbar {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  background-color: #495371;
+}
+.home {
+  flex: 2;
+}
+.searchBar {
+  flex: 5;
+}
+.userLogin {
+  flex: 3;
+  display: flex;
+  justify-content: space-around;
+}
